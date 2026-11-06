@@ -2,26 +2,26 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DEV-LIB — Ochiq Manba va AI Dasturchilar Kutubxonasi",
+  title: "Everything for Claude Code — Ochiq Manba va AI Dasturchilar Kutubxonasi",
   description:
-    "Eng yaxshi AI vositalari, ochiq manbalar, muhandislik skill'lari va GitHub loyihalari — barchasi bir joyda.",
+    "Everything for Claude Code: Dasturchilar va coding agentlar uchun eng yaxshi ochiq manbali vositalar, ko'nikmalar va arxitektura yechimlari.",
   keywords: [
+    "Everything for Claude Code",
+    "Claude Code",
+    "ECC",
     "Open Source",
     "AI Tools",
     "Developer Tools",
-    "Claude Code",
     "Antigravity",
     "OmniRoute",
     "Headroom",
     "Strix",
-    "Dasturlash",
-    "O'zbek dasturchilari",
   ],
   authors: [{ name: "Abdullayev Temurmalik" }],
   openGraph: {
-    title: "DEV-LIB — Premium Open Source & AI Developer Library",
+    title: "Everything for Claude Code — Open Source & AI Developer Library",
     description:
-      "Dasturchilar uchun eng yaxshi ochiq manbalar, AI vositalari va foydali GitHub loyihalari katalogi.",
+      "Dasturchilar va AI agentlar uchun eng yaxshi ochiq manbalar va vositalar katalogi.",
     type: "website",
     locale: "uz_UZ",
   },

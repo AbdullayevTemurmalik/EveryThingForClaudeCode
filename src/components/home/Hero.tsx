@@ -1,5 +1,6 @@
 import React from "react";
-import { Sparkles, CheckCircle } from "lucide-react";
+import { CheckCircle } from "lucide-react";
+import { ClaudeIcon } from "@/components/ui/ClaudeIcon";
 
 interface HeroProps {
   totalCount: number;
@@ -7,11 +8,11 @@ interface HeroProps {
 
 export function Hero({ totalCount }: HeroProps) {
   return (
-    <section className="relative pt-6 pb-8 border-b border-[#302720]/60">
+    <section className="relative pt-6 pb-6 border-b border-[#302720]/60">
       <div className="flex flex-col items-start gap-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1D1712] border border-[#302720] text-xs text-[#D5A06B]">
-          <Sparkles className="w-3.5 h-3.5 text-[#A47550]" />
-          <span className="font-medium">Ochiq Manba & AI Dasturchilar Hamjamiyati</span>
+          <ClaudeIcon className="w-4 h-4 text-[#D5A06B]" />
+          <span className="font-semibold text-[#F7F4EF]">Everything for Claude Code</span>
           <span className="w-1 h-1 rounded-full bg-[#A47550]"></span>
           <span className="font-mono text-[11px] text-[#B8ABA0] flex items-center gap-1">
             <CheckCircle className="w-3 h-3 text-[#4ADE80]" />
@@ -19,7 +20,7 @@ export function Hero({ totalCount }: HeroProps) {
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-[#F7F4EF]">
+        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F7F4EF]">
           Dasturchilar uchun eng yaxshi ochiq manbalar
         </h1>
 

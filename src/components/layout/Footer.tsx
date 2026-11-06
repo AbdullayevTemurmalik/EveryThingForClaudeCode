@@ -10,9 +10,10 @@ export function Footer() {
         {/* Left Information */}
         <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
           <div className="flex items-center gap-2">
-            <span className="font-bold text-[#F7F4EF] text-sm">DEV-LIB</span>
-            <span className="text-[#302720]">|</span>
-            <span>Open Source & AI Developer Library</span>
+            <span className="font-extrabold text-white text-base font-mono px-2 py-0.5 rounded bg-[#1D1712] border border-[#302720]">
+              ECC
+            </span>
+            <span className="font-bold text-[#F7F4EF] text-sm">Everything for Claude Code</span>
           </div>
           <p className="text-[#B8ABA0]/80 max-w-md">
             Dasturchilar va AI agentlar uchun eng yaxshi vositalar, ko&apos;nikmalar va arxitektura
