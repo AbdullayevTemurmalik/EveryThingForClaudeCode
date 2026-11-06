@@ -25,13 +25,17 @@ export function Hero({ totalCount }: HeroProps) {
         </div>
 
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F7F4EF] flex items-center flex-wrap gap-3">
-          <span>Dasturchilar uchun eng yaxshi ochiq manbalar</span>
+          <span>Everything for Claude Code</span>
           <img
             src="/claude-starburst-transparent.png"
             alt="Claude Starburst"
-            className="w-8 h-8 sm:w-10 sm:h-10 object-contain inline-block drop-shadow-[0_0_12px_rgba(217,119,87,0.3)]"
+            className="w-9 h-9 sm:w-11 sm:h-11 object-contain inline-block drop-shadow-[0_0_16px_rgba(217,119,87,0.4)]"
           />
         </h1>
+
+        <p className="text-base sm:text-lg text-[#E6DFD5] font-medium">
+          Dasturchilar uchun eng yaxshi ochiq manbalar va AI vositalari
+        </p>
 
         <p className="text-sm sm:text-base text-[#B8ABA0] max-w-2xl leading-relaxed">
           AI vositalari, dasturlash resurslari, tayyor yechimlar va foydali GitHub loyihalari —

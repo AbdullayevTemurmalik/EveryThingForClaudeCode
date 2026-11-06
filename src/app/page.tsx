@@ -22,12 +22,14 @@ export default function HomePage() {
       {
         value: "all",
         label: "Barcha manbalarni ko'rsatish",
-        badge: `${RESOURCES.length} ta`,
+        badge: `${RESOURCES.length} ta manba`,
+        description: "Kutubxonadagi barcha 8 ta loyihani to'liq jadvalda ko'rish",
       },
       ...RESOURCES.map((r) => ({
         value: r.id,
         label: r.name,
         badge: r.category,
+        description: r.shortDescription,
       })),
     ];
   }, []);
