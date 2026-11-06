@@ -25,11 +25,6 @@ export function Navbar() {
               <span className="font-extrabold text-[#F7F4EF] text-base sm:text-lg tracking-tight">
                 Everything for Claude Code
               </span>
-              <img
-                src="/claude-starburst-transparent.png"
-                alt="Claude Starburst"
-                className="w-5 h-5 object-contain"
-              />
               <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#1D1712] border border-[#302720] text-[#D5A06B]">
                 ECC
               </span>

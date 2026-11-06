@@ -25,12 +25,12 @@ export function Hero({ totalCount }: HeroProps) {
         </div>
 
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#F7F4EF] flex items-center flex-wrap gap-3">
-          <span>Everything for Claude Code</span>
           <img
             src="/claude-starburst-transparent.png"
             alt="Claude Starburst"
             className="w-9 h-9 sm:w-11 sm:h-11 object-contain inline-block drop-shadow-[0_0_16px_rgba(217,119,87,0.4)]"
           />
+          <span>Everything for Claude Code</span>
         </h1>
 
         <p className="text-base sm:text-lg text-[#E6DFD5] font-medium">
