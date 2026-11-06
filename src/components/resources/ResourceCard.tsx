@@ -24,6 +24,9 @@ interface ResourceCardProps {
 // Icon mapper for cards
 function getResourceIcon(id: string) {
   switch (id) {
+    case "everything-for-claude-code":
+    case "ecc-temurmalik":
+    case "ecc-affaan":
     case "ecc":
       return <ClaudeIcon className="w-7 h-7 text-[#D5A06B]" />;
     case "omniroute":

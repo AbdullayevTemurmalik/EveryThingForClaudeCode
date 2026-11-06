@@ -54,7 +54,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Main Full-Screen Centered Container */}
-      <main className="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Hero Section */}
         <Hero totalCount={RESOURCES.length} />
 
@@ -110,8 +110,8 @@ export default function HomePage() {
             </span>
           </div>
 
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Cards Grid (Exact 4 Columns - 2 Rows of 4 Cards) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
             {displayedResources.map((resource) => (
               <ResourceCard
                 key={resource.id}

@@ -23,9 +23,40 @@ export const CATEGORIES = [
 
 export const RESOURCES: Resource[] = [
   {
-    id: "ecc",
-    name: "ECC (Everything Claude Code)",
-    slug: "ecc",
+    id: "ecc-temurmalik",
+    name: "ECC (Temurmalik)",
+    slug: "ecc-temurmalik",
+    owner: "AbdullayevTemurmalik",
+    repo: "ECC",
+    url: "https://github.com/AbdullayevTemurmalik/ECC",
+    cloneUrl: "https://github.com/AbdullayevTemurmalik/ECC.git",
+    category: "AI Developer Tools",
+    license: "MIT",
+    technologies: ["TypeScript", "Claude Code", "Agent Skills", "Hooks", "Security"],
+    shortDescription:
+      "Abdullayev Temurmalik tomonidan Claude Code va AI agentlar uchun sozlangan ECC muhandislik tizimi va ko'nikmalar to'plami.",
+    fullDescription:
+      "Everything Claude Code (ECC - Temurmalik) — Claude Code va Antigravity coding agentlari uchun optimallashtirilgan muhandislik arxitekturasi. O'z ichiga ixtisoslashgan ko'nikmalar (skills), avtomatlashtirish qoidalari va xavfsiz prompt boshqaruvini oladi.",
+    features: [
+      "Claude Code uchun maxsus moslashtirilgan muhandislik workflow",
+      "Ko'chma skill'lar (SKILL.md) va tayyor prompt qoliplari",
+      "Xavfsiz konfiguratsiya va lokal muhitda oson integratsiya",
+      "Antigravity va Cursor bilan to'liq muvofiqlik",
+    ],
+    installCommands: [
+      "git clone https://github.com/AbdullayevTemurmalik/ECC.git",
+      "cd ECC",
+      "# Claude Code yoki Antigravity sozlamalariga ulash",
+    ],
+    recommendedUse:
+      "Claude Code va Antigravity agentlari bilan dasturlash samaradorligini oshirishda.",
+    antigravityCompatibility:
+      "To'liq mos. Agentlar va skill'lar tizimi bilan uzviy ishlaydi.",
+  },
+  {
+    id: "ecc-affaan",
+    name: "ECC (Affan Mustafa)",
+    slug: "ecc-affaan",
     owner: "affaan-m",
     repo: "ECC",
     url: "https://github.com/affaan-m/ECC",
@@ -34,9 +65,9 @@ export const RESOURCES: Resource[] = [
     license: "MIT",
     technologies: ["TypeScript", "Agent Skills", "Hooks", "Security", "Bash"],
     shortDescription:
-      "Coding agentlar uchun muhandislik workflow, ixtisoslashgan agentlar, ko'chma skill'lar (SKILL.md), xotira boshqaruvi va xavfsizlik tizimi.",
+      "Coding agentlar uchun original muhandislik workflow, ixtisoslashgan agentlar, ko'chma skill'lar va AgentShield tizimi.",
     fullDescription:
-      "Everything Claude Code (ECC) — sun'iy intellekt coding agentlarining (Claude Code, Cursor, Codex, OpenCode) samaradorligini oshiruvchi keng qamrovli muhandislik tizimi. O'z ichiga 'reja -> test -> amalga oshirish -> ko'rib chiqish -> tekshirish -> eslab qolish' siklini, o'nlab ixtisoslashgan agentlarni, yuzlab ko'chma SKILL.md formatidagi ko'nikmalarni va AgentShield xavfsizlik tekshiruvini oladi.",
+      "Everything Claude Code (ECC) — sun'iy intellekt coding agentlarining (Claude Code, Cursor, Codex, OpenCode) samaradorligini oshiruvchi original muhandislik tizimi. Asl muallif: Affan Mustafa (@affaan-m). O'z ichiga 'reja -> test -> amalga oshirish -> ko'rib chiqish -> tekshirish -> eslab qolish' siklini, o'nlab ixtisoslashgan agentlarni, yuzlab ko'chma SKILL.md formatidagi ko'nikmalarni va AgentShield xavfsizlik tekshiruvini oladi.",
     features: [
       "Agent muhandislik sikli: plan -> test -> implement -> review -> verify -> remember",
       "Ko'chma skill'lar (SKILL.md) va ixtisoslashgan subagentlar to'plami",
@@ -46,7 +77,7 @@ export const RESOURCES: Resource[] = [
     installCommands: [
       "git clone https://github.com/affaan-m/ECC.git",
       "cd ECC",
-      "# Antigravity yoki Claude Code uchun ko'nikmalarni ulash",
+      "# Asl muhandislik ko'nikmalarini ishga tushirish",
     ],
     recommendedUse:
       "Coding agentlar orqali katta loyihalarni rejalashtirish, xavfsiz kod yozish va avtonom tuzatish jarayonlari uchun.",

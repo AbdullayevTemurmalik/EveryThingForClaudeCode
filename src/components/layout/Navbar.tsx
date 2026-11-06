@@ -10,10 +10,14 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-[#302720] bg-[#090807]/95 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand / Logo with Claude Code icon */}
+        {/* Brand / Logo with official Claude App Icon */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#A47550] to-[#1D1712] border border-[#D5A06B]/40 flex items-center justify-center shadow-lg">
-            <ClaudeIcon className="w-6 h-6 text-[#D5A06B]" />
+          <div className="w-10 h-10 rounded-xl overflow-hidden border border-[#D5A06B]/40 shadow-lg flex items-center justify-center bg-[#1D1712]">
+            <img
+              src="/claude-app-icon-transparent.png"
+              alt="Claude Code Logo"
+              className="w-full h-full object-cover"
+            />
           </div>
 
           <div className="flex flex-col">
@@ -21,6 +25,11 @@ export function Navbar() {
               <span className="font-extrabold text-[#F7F4EF] text-base sm:text-lg tracking-tight">
                 Everything for Claude Code
               </span>
+              <img
+                src="/claude-starburst-transparent.png"
+                alt="Claude Starburst"
+                className="w-5 h-5 object-contain"
+              />
               <span className="hidden sm:inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-mono rounded-full bg-[#1D1712] border border-[#302720] text-[#D5A06B]">
                 ECC
               </span>
