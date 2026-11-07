@@ -4,6 +4,8 @@ import React, { useEffect } from "react";
 import { X, ExternalLink, ShieldAlert, Cpu, CheckCircle2, Terminal } from "lucide-react";
 import { Resource } from "@/types/resource";
 import { CopyButton } from "@/components/ui/CopyButton";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 
 interface ResourceDetailModalProps {
   resource: Resource | null;
@@ -14,6 +16,59 @@ export function ResourceDetailModal({
   resource,
   onClose,
 }: ResourceDetailModalProps) {
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language] || TRANSLATIONS.uz;
+
+  const labels = {
+    uz: {
+      author: "Muallif:",
+      compatibility: "Google Antigravity bilan mosligi",
+      overview: "Loyiha haqida",
+      features: "Asosiy imkoniyatlari",
+      recommended: "Tavsiya etilgan foydalanish holati",
+      install: "O'rnatish va ishga tushirish buyruqlari",
+      openGithub: "GitHub Repozitoriyasini ochish",
+      warningTitle: "Xavfsizlik ogohlantirishi",
+      close: "Yopish",
+      copied: "Nusxalandi!",
+    },
+    en: {
+      author: "Author:",
+      compatibility: "Google Antigravity Compatibility",
+      overview: "About the Project",
+      features: "Key Features",
+      recommended: "Recommended Use Case",
+      install: "Installation & Run Commands",
+      openGithub: "Open GitHub Repository",
+      warningTitle: "Security Notice",
+      close: "Close",
+      copied: "Copied!",
+    },
+    ru: {
+      author: "Автор:",
+      compatibility: "Совместимость с Google Antigravity",
+      overview: "О проекте",
+      features: "Основные возможности",
+      recommended: "Рекомендуемые сценарии",
+      install: "Команды установки и запуска",
+      openGithub: "Открыть репозиторий GitHub",
+      warningTitle: "Предупреждение безопасности",
+      close: "Закрыть",
+      copied: "Скопировано!",
+    },
+  }[language] || {
+    author: "Muallif:",
+    compatibility: "Google Antigravity bilan mosligi",
+    overview: "Loyiha haqida",
+    features: "Asosiy imkoniyatlari",
+    recommended: "Tavsiya etilgan foydalanish holati",
+    install: "O'rnatish va ishga tushirish buyruqlari",
+    openGithub: "GitHub Repozitoriyasini ochish",
+    warningTitle: "Xavfsizlik ogohlantirishi",
+    close: "Yopish",
+    copied: "Nusxalandi!",
+  };
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -61,13 +116,13 @@ export function ResourceDetailModal({
               {resource.name}
             </h2>
             <p className="text-xs text-[#B8ABA0] mt-1 font-mono">
-              Muallif: <span className="text-[#F7F4EF]">{resource.owner}</span>
+              {labels.author} <span className="text-[#F7F4EF]">{resource.owner}</span>
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label="Yopish"
+            aria-label={labels.close}
             className="p-2 rounded-lg text-[#B8ABA0] hover:text-[#F7F4EF] hover:bg-[#261E17] transition-colors"
           >
             <X className="w-5 h-5" />
@@ -76,120 +131,95 @@ export function ResourceDetailModal({
 
         {/* Modal Body */}
         <div className="p-6 overflow-y-auto space-y-6 text-sm text-[#F7F4EF]/90">
-          {/* Antigravity Mosligi */}
+          {/* Antigravity Compatibility */}
           <div className="flex items-start gap-3 p-3 rounded-lg bg-[#1D1712] border border-[#302720]">
             <Cpu className="w-5 h-5 text-[#A47550] shrink-0 mt-0.5" />
             <div>
               <h4 className="font-semibold text-[#F7F4EF] text-xs uppercase tracking-wider mb-0.5">
-                Google Antigravity bilan mosligi
+                {labels.compatibility}
               </h4>
               <p className="text-xs text-[#B8ABA0]">{resource.antigravityCompatibility}</p>
             </div>
           </div>
 
-          {/* Tavsif */}
+          {/* Description */}
           <div>
-            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">Loyiha haqida</h3>
+            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">{labels.overview}</h3>
             <p className="text-[#B8ABA0] leading-relaxed">{resource.fullDescription}</p>
           </div>
 
-          {/* Asosiy Imkoniyatlar */}
+          {/* Key Features */}
           <div>
-            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">Asosiy imkoniyatlari</h3>
+            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">{labels.features}</h3>
             <ul className="space-y-2">
               {resource.features.map((feature, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-sm text-[#B8ABA0]">
-                  <CheckCircle2 className="w-4 h-4 text-[#A47550] shrink-0 mt-0.5" />
+                <li key={idx} className="flex items-start gap-2 text-xs text-[#B8ABA0]">
+                  <CheckCircle2 className="w-4 h-4 text-[#D5A06B] shrink-0 mt-0.5" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Texnologiyalar */}
+          {/* Recommended Use */}
           <div>
-            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">Texnologiyalar</h3>
-            <div className="flex flex-wrap gap-1.5">
-              {resource.technologies.map((tech) => (
-                <span
-                  key={tech}
-                  className="px-2.5 py-1 text-xs rounded-md bg-[#1D1712] border border-[#302720] text-[#B8ABA0]"
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <h3 className="font-semibold text-[#F7F4EF] mb-1.5 text-base">{labels.recommended}</h3>
+            <p className="text-xs text-[#B8ABA0] bg-[#1D1712] p-3 rounded-lg border border-[#302720]">
+              {resource.recommendedUse}
+            </p>
           </div>
 
-          {/* O'rnatish yo'riqnomasi */}
+          {/* Warning banner */}
+          {resource.warning && (
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2A1510] border border-[#7A2E1E] text-xs text-[#FCA5A5]">
+              <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5 text-[#EF4444]" />
+              <div>
+                <span className="font-semibold">{labels.warningTitle}: </span>
+                {resource.warning}
+              </div>
+            </div>
+          )}
+
+          {/* Install Commands */}
           <div>
             <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base flex items-center gap-2">
               <Terminal className="w-4 h-4 text-[#A47550]" />
-              <span>O&apos;rnatish va ishga tushirish</span>
+              <span>{labels.install}</span>
             </h3>
             <div className="space-y-2">
               {resource.installCommands.map((cmd, idx) => (
                 <div
                   key={idx}
-                  className="flex items-center justify-between p-3 rounded-lg bg-[#090807] border border-[#302720] font-mono text-xs text-[#F7F4EF]"
+                  className="flex items-center justify-between p-3 rounded-lg bg-[#090807] border border-[#302720] font-mono text-xs text-[#E6DFD5] overflow-x-auto"
                 >
-                  <span className="truncate mr-2">{cmd}</span>
-                  <CopyButton textToCopy={cmd} iconOnly label="Nusxalash" />
+                  <code className="text-[#D5A06B] mr-2">{cmd}</code>
+                  {!cmd.startsWith("#") && (
+                    <CopyButton textToCopy={cmd} label="Copy" successLabel={labels.copied} />
+                  )}
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Tavsiya etilgan foydalanish sohasi */}
-          <div className="p-4 rounded-lg bg-[#1D1712] border border-[#302720]">
-            <h4 className="font-semibold text-[#F7F4EF] text-xs uppercase tracking-wider mb-1">
-              Tavsiya etilgan foydalanish sohasi
-            </h4>
-            <p className="text-xs text-[#B8ABA0]">{resource.recommendedUse}</p>
-          </div>
-
-          {/* Ogohlantirish (Mavjud bo'lsa) */}
-          {resource.warning && (
-            <div className="flex items-start gap-3 p-4 rounded-lg bg-[#C77700]/10 border border-[#C77700]/40 text-[#D5A06B]">
-              <ShieldAlert className="w-5 h-5 shrink-0 mt-0.5" />
-              <div>
-                <h4 className="font-semibold text-xs uppercase tracking-wider mb-1 text-[#F7F4EF]">
-                  Diqqat va Xavfsizlik Eslatmasi
-                </h4>
-                <p className="text-xs leading-relaxed">{resource.warning}</p>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Modal Footer */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-4 border-t border-[#302720] bg-[#1D1712]">
-          <div className="flex items-center gap-2">
-            <CopyButton
-              textToCopy={resource.cloneUrl}
-              label="git clone buyrug'i"
-              successLabel="Clone nusxalandi!"
-            />
-          </div>
-
-          <div className="flex items-center gap-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="px-4 py-2 text-xs font-medium rounded-lg text-[#B8ABA0] hover:text-[#F7F4EF] hover:bg-[#261E17] border border-[#302720]"
-            >
-              Yopish
-            </button>
-            <a
-              href={resource.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium rounded-lg bg-[#A47550] hover:bg-[#BD8A60] text-white transition-colors"
-            >
-              <span>GitHub&apos;da ko&apos;rish</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
+        <div className="p-4 border-t border-[#302720] bg-[#1D1712] flex items-center justify-between gap-3">
+          <a
+            href={resource.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-[#A47550] hover:bg-[#BD8A60] text-white transition-colors"
+          >
+            <span>{labels.openGithub}</span>
+            <ExternalLink className="w-3.5 h-3.5" />
+          </a>
+          <button
+            type="button"
+            onClick={onClose}
+            className="px-4 py-2 text-xs font-semibold rounded-lg bg-[#14110E] hover:bg-[#261E17] text-[#B8ABA0] hover:text-[#F7F4EF] border border-[#302720] transition-colors"
+          >
+            {labels.close}
+          </button>
         </div>
       </div>
     </div>

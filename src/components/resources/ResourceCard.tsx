@@ -15,6 +15,8 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import { ClaudeIcon } from "@/components/ui/ClaudeIcon";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 
 interface ResourceCardProps {
   resource: Resource;
@@ -47,6 +49,8 @@ function getResourceIcon(id: string) {
 }
 
 export function ResourceCard({ resource, onSelect }: ResourceCardProps) {
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language] || TRANSLATIONS.uz;
   const cloneCommand = `git clone ${resource.url}.git`;
 
   return (
@@ -113,7 +117,7 @@ export function ResourceCard({ resource, onSelect }: ResourceCardProps) {
         <CopyButton
           textToCopy={cloneCommand}
           label="git clone"
-          successLabel="Nusxalandi!"
+          successLabel={t.card.copied}
           className="text-[11px] py-1.5 px-2.5"
         />
 
@@ -126,7 +130,7 @@ export function ResourceCard({ resource, onSelect }: ResourceCardProps) {
             }}
             className="px-3 py-1.5 text-[11px] font-medium rounded-lg bg-[#1D1712] hover:bg-[#261E17] text-[#F7F4EF] border border-[#302720] hover:border-[#584231] transition-colors"
           >
-            Batafsil
+            {t.card.details}
           </button>
 
           <a

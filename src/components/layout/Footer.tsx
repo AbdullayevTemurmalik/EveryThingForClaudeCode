@@ -1,9 +1,16 @@
+"use client";
+
 import React from "react";
-import { Heart, Shield } from "lucide-react";
+import { Shield } from "lucide-react";
 import { GithubIcon } from "@/components/ui/GithubIcon";
 import { MAIN_REPOSITORY } from "@/data/resources";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 
 export function Footer() {
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language] || TRANSLATIONS.uz;
+
   return (
     <footer className="mt-16 border-t border-[#302720] bg-[#14110E] py-10 px-4 sm:px-8 text-xs text-[#B8ABA0]">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -16,8 +23,7 @@ export function Footer() {
             <span className="font-bold text-[#F7F4EF] text-sm">Everything for Claude Code</span>
           </div>
           <p className="text-[#B8ABA0]/80 max-w-md">
-            Dasturchilar va AI agentlar uchun eng yaxshi vositalar, ko&apos;nikmalar va arxitektura
-            yechimlari jamlangan mustaqil platforma.
+            {t.footer.madeBy}
           </p>
         </div>
 
@@ -41,7 +47,7 @@ export function Footer() {
           </div>
 
           <p className="text-[11px] text-[#B8ABA0]/60 flex items-center gap-1">
-            Muallif: <span className="text-[#F7F4EF]">Abdullayev Temurmalik</span>
+            <span>{t.footer.rights}</span>
           </p>
         </div>
       </div>

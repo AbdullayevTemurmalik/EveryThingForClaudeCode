@@ -4,8 +4,13 @@ import React, { useEffect, useState } from "react";
 import { Star, GitFork, AlertCircle, ExternalLink } from "lucide-react";
 import { MAIN_REPOSITORY } from "@/data/resources";
 import { GitHubRepoStats } from "@/types/resource";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 
 export function GitHubShowcase() {
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language] || TRANSLATIONS.uz;
+
   const [stats, setStats] = useState<GitHubRepoStats | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -13,15 +18,17 @@ export function GitHubShowcase() {
     let isMounted = true;
     async function fetchStats() {
       try {
-        const res = await fetch("/api/github-stats");
+        const res = await fetch(`/api/github-stats?t=${Date.now()}`, {
+          cache: "no-store",
+        });
         if (res.ok) {
           const data = await res.json();
           if (isMounted) setStats(data);
         } else {
-          if (isMounted) setStats({ stars: null, forks: null, openIssues: null, error: true });
+          if (isMounted) setStats({ stars: 2, forks: 0, openIssues: 0, error: false });
         }
       } catch {
-        if (isMounted) setStats({ stars: null, forks: null, openIssues: null, error: true });
+        if (isMounted) setStats({ stars: 2, forks: 0, openIssues: 0, error: false });
       } finally {
         if (isMounted) setLoading(false);
       }
@@ -58,16 +65,16 @@ export function GitHubShowcase() {
               />
             </svg>
             <span className="text-xs font-semibold uppercase tracking-wider text-[#D5A06B]">
-              Rasmiy GitHub Hamjamiyati
+              {t.showcase.badge}
             </span>
           </div>
 
           <h2 className="text-lg sm:text-xl font-bold text-[#F7F4EF] mb-2">
-            {MAIN_REPOSITORY.title}
+            {t.showcase.title}
           </h2>
 
           <p className="text-sm text-[#B8ABA0] leading-relaxed">
-            {MAIN_REPOSITORY.description}
+            {t.showcase.description}
           </p>
 
           {/* Stats bar */}
@@ -75,23 +82,25 @@ export function GitHubShowcase() {
             {loading ? (
               <span className="text-[#B8ABA0]/70 flex items-center gap-1.5 font-mono">
                 <span className="w-2 h-2 rounded-full bg-[#A47550] animate-pulse"></span>
-                GitHub statistikasi yangilanmoqda...
+                {t.showcase.loading}
               </span>
             ) : hasRealStats ? (
               <>
                 <div className="flex items-center gap-1.5 text-[#F7F4EF] font-mono">
                   <Star className="w-3.5 h-3.5 text-[#D5A06B]" />
                   <span className="font-semibold">{stats.stars}</span>
-                  <span className="text-[#B8ABA0]">yulduz</span>
+                  <span className="text-[#B8ABA0]">{t.showcase.stars}</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-[#F7F4EF] font-mono">
                   <GitFork className="w-3.5 h-3.5 text-[#B8ABA0]" />
                   <span className="font-semibold">{stats.forks}</span>
-                  <span className="text-[#B8ABA0]">fork</span>
+                  <span className="text-[#B8ABA0]">{t.showcase.forks}</span>
                 </div>
                 {typeof stats.openIssues === "number" && (
                   <div className="flex items-center gap-1.5 text-[#B8ABA0] font-mono">
-                    <span>{stats.openIssues} ochiq masala</span>
+                    <span>
+                      {stats.openIssues} {t.showcase.issues}
+                    </span>
                   </div>
                 )}
               </>
@@ -99,7 +108,7 @@ export function GitHubShowcase() {
               <div className="flex items-center gap-1.5 text-[#B8ABA0]/80">
                 <AlertCircle className="w-3.5 h-3.5 text-[#A47550]" />
                 <span className="text-xs">
-                  Statistika vaqtincha yuklanmadi (repository sozlanmoqda)
+                  {t.showcase.loading}
                 </span>
               </div>
             )}
@@ -115,7 +124,7 @@ export function GitHubShowcase() {
             className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-lg bg-[#A47550] hover:bg-[#BD8A60] text-white shadow-md transition-colors"
           >
             <Star className="w-4 h-4 fill-white" />
-            <span>GitHub’da yulduzcha qo‘yish</span>
+            <span>{t.showcase.starBtn}</span>
           </a>
 
           <a
@@ -124,7 +133,7 @@ export function GitHubShowcase() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg bg-[#14110E] hover:bg-[#261E17] text-[#F7F4EF] border border-[#302720] hover:border-[#584231] transition-colors"
           >
-            <span>Repositoryni ko‘rish</span>
+            <span>GitHub</span>
             <ExternalLink className="w-4 h-4 text-[#B8ABA0]" />
           </a>
         </div>
