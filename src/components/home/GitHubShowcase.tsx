@@ -18,7 +18,7 @@ export function GitHubShowcase() {
     let isMounted = true;
     async function fetchStats() {
       try {
-        const res = await fetch(`/api/github-stats?t=${Date.now()}`, {
+        const res = await fetch(`/api/github-stats`, {
           cache: "no-store",
         });
         if (res.ok) {

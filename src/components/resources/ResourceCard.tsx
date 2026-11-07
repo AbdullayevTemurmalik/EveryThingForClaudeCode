@@ -116,7 +116,7 @@ export function ResourceCard({ resource, onSelect }: ResourceCardProps) {
       >
         <CopyButton
           textToCopy={cloneCommand}
-          label="git clone"
+          label={t.card.clone}
           successLabel={t.card.copied}
           className="text-[11px] py-1.5 px-2.5"
         />

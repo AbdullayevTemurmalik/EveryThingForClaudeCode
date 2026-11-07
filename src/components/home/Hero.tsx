@@ -17,11 +17,6 @@ export function Hero({ totalCount }: HeroProps) {
     <section className="relative pt-6 pb-6 border-b border-[#302720]/60">
       <div className="flex flex-col items-start gap-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1D1712] border border-[#302720] text-xs text-[#D5A06B]">
-          <img
-            src="/claude-starburst-transparent.png"
-            alt="Claude Starburst"
-            className="w-4 h-4 object-contain"
-          />
           <span className="font-semibold text-[#F7F4EF]">{t.hero.badge}</span>
           <span className="w-1 h-1 rounded-full bg-[#A47550]"></span>
           <span className="font-mono text-[11px] text-[#B8ABA0] flex items-center gap-1">

@@ -36,8 +36,10 @@ export interface Translations {
     copied: string;
     github: string;
     license: string;
+    clone: string;
   };
   modal: {
+    author: string;
     overview: string;
     install: string;
     features: string;
@@ -45,6 +47,9 @@ export interface Translations {
     compatibility: string;
     recommended: string;
     close: string;
+    openGithub: string;
+    warningTitle: string;
+    copied: string;
   };
   footer: {
     madeBy: string;
@@ -92,15 +97,20 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       copied: "Nusxalandi!",
       github: "GitHub",
       license: "Litsenziya",
+      clone: "git clone",
     },
     modal: {
-      overview: "Umumiy ma'lumot",
-      install: "O'rnatish",
-      features: "Asosiy imkoniyatlar",
+      author: "Muallif:",
+      overview: "Loyiha haqida",
+      install: "O'rnatish va ishga tushirish buyruqlari",
+      features: "Asosiy imkoniyatlari",
       license: "Litsenziya",
-      compatibility: "Moslik",
-      recommended: "Tavsiya etilgan foydalanish",
+      compatibility: "Google Antigravity bilan mosligi",
+      recommended: "Tavsiya etilgan foydalanish holati",
       close: "Yopish",
+      openGithub: "GitHub Repozitoriyasini ochish",
+      warningTitle: "Xavfsizlik ogohlantirishi",
+      copied: "Nusxalandi!",
     },
     footer: {
       madeBy: "Abdullayev Temurmalik tomonidan ishlab chiqilgan va Claude Code hamjamiyatiga bag'ishlangan.",
@@ -146,15 +156,20 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       copied: "Copied!",
       github: "GitHub",
       license: "License",
+      clone: "git clone",
     },
     modal: {
-      overview: "Overview",
-      install: "Installation",
+      author: "Author:",
+      overview: "About the Project",
+      install: "Installation & Run Commands",
       features: "Key Features",
       license: "License",
-      compatibility: "Compatibility",
-      recommended: "Recommended Use",
+      compatibility: "Google Antigravity Compatibility",
+      recommended: "Recommended Use Case",
       close: "Close",
+      openGithub: "Open GitHub Repository",
+      warningTitle: "Security Notice",
+      copied: "Copied!",
     },
     footer: {
       madeBy: "Crafted by Abdullayev Temurmalik and dedicated to the Claude Code developer community.",
@@ -200,15 +215,20 @@ export const TRANSLATIONS: Record<Language, Translations> = {
       copied: "Скопировано!",
       github: "GitHub",
       license: "Лицензия",
+      clone: "git clone",
     },
     modal: {
-      overview: "Обзор",
-      install: "Установка",
+      author: "Автор:",
+      overview: "О проекте",
+      install: "Команды установки и запуска",
       features: "Основные возможности",
       license: "Лицензия",
-      compatibility: "Совместимость",
-      recommended: "Рекомендуемое применение",
+      compatibility: "Совместимость с Google Antigravity",
+      recommended: "Рекомендуемые сценарии",
       close: "Закрыть",
+      openGithub: "Открыть репозиторий GitHub",
+      warningTitle: "Предупреждение безопасности",
+      copied: "Скопировано!",
     },
     footer: {
       madeBy: "Разработано Темурмаликом Абдуллаевым для сообщества разработчиков Claude Code.",

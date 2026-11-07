@@ -19,56 +19,6 @@ export function ResourceDetailModal({
   const { language } = useLanguage();
   const t = TRANSLATIONS[language] || TRANSLATIONS.uz;
 
-  const labels = {
-    uz: {
-      author: "Muallif:",
-      compatibility: "Google Antigravity bilan mosligi",
-      overview: "Loyiha haqida",
-      features: "Asosiy imkoniyatlari",
-      recommended: "Tavsiya etilgan foydalanish holati",
-      install: "O'rnatish va ishga tushirish buyruqlari",
-      openGithub: "GitHub Repozitoriyasini ochish",
-      warningTitle: "Xavfsizlik ogohlantirishi",
-      close: "Yopish",
-      copied: "Nusxalandi!",
-    },
-    en: {
-      author: "Author:",
-      compatibility: "Google Antigravity Compatibility",
-      overview: "About the Project",
-      features: "Key Features",
-      recommended: "Recommended Use Case",
-      install: "Installation & Run Commands",
-      openGithub: "Open GitHub Repository",
-      warningTitle: "Security Notice",
-      close: "Close",
-      copied: "Copied!",
-    },
-    ru: {
-      author: "Автор:",
-      compatibility: "Совместимость с Google Antigravity",
-      overview: "О проекте",
-      features: "Основные возможности",
-      recommended: "Рекомендуемые сценарии",
-      install: "Команды установки и запуска",
-      openGithub: "Открыть репозиторий GitHub",
-      warningTitle: "Предупреждение безопасности",
-      close: "Закрыть",
-      copied: "Скопировано!",
-    },
-  }[language] || {
-    author: "Muallif:",
-    compatibility: "Google Antigravity bilan mosligi",
-    overview: "Loyiha haqida",
-    features: "Asosiy imkoniyatlari",
-    recommended: "Tavsiya etilgan foydalanish holati",
-    install: "O'rnatish va ishga tushirish buyruqlari",
-    openGithub: "GitHub Repozitoriyasini ochish",
-    warningTitle: "Xavfsizlik ogohlantirishi",
-    close: "Yopish",
-    copied: "Nusxalandi!",
-  };
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -116,13 +66,13 @@ export function ResourceDetailModal({
               {resource.name}
             </h2>
             <p className="text-xs text-[#B8ABA0] mt-1 font-mono">
-              {labels.author} <span className="text-[#F7F4EF]">{resource.owner}</span>
+              {t.modal.author} <span className="text-[#F7F4EF]">{resource.owner}</span>
             </p>
           </div>
           <button
             type="button"
             onClick={onClose}
-            aria-label={labels.close}
+            aria-label={t.modal.close}
             className="p-2 rounded-lg text-[#B8ABA0] hover:text-[#F7F4EF] hover:bg-[#261E17] transition-colors"
           >
             <X className="w-5 h-5" />
@@ -136,7 +86,7 @@ export function ResourceDetailModal({
             <Cpu className="w-5 h-5 text-[#A47550] shrink-0 mt-0.5" />
             <div>
               <h4 className="font-semibold text-[#F7F4EF] text-xs uppercase tracking-wider mb-0.5">
-                {labels.compatibility}
+                {t.modal.compatibility}
               </h4>
               <p className="text-xs text-[#B8ABA0]">{resource.antigravityCompatibility}</p>
             </div>
@@ -144,13 +94,13 @@ export function ResourceDetailModal({
 
           {/* Description */}
           <div>
-            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">{labels.overview}</h3>
+            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">{t.modal.overview}</h3>
             <p className="text-[#B8ABA0] leading-relaxed">{resource.fullDescription}</p>
           </div>
 
           {/* Key Features */}
           <div>
-            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">{labels.features}</h3>
+            <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base">{t.modal.features}</h3>
             <ul className="space-y-2">
               {resource.features.map((feature, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-xs text-[#B8ABA0]">
@@ -163,7 +113,7 @@ export function ResourceDetailModal({
 
           {/* Recommended Use */}
           <div>
-            <h3 className="font-semibold text-[#F7F4EF] mb-1.5 text-base">{labels.recommended}</h3>
+            <h3 className="font-semibold text-[#F7F4EF] mb-1.5 text-base">{t.modal.recommended}</h3>
             <p className="text-xs text-[#B8ABA0] bg-[#1D1712] p-3 rounded-lg border border-[#302720]">
               {resource.recommendedUse}
             </p>
@@ -174,7 +124,7 @@ export function ResourceDetailModal({
             <div className="flex items-start gap-3 p-3 rounded-lg bg-[#2A1510] border border-[#7A2E1E] text-xs text-[#FCA5A5]">
               <ShieldAlert className="w-4 h-4 shrink-0 mt-0.5 text-[#EF4444]" />
               <div>
-                <span className="font-semibold">{labels.warningTitle}: </span>
+                <span className="font-semibold">{t.modal.warningTitle}: </span>
                 {resource.warning}
               </div>
             </div>
@@ -184,7 +134,7 @@ export function ResourceDetailModal({
           <div>
             <h3 className="font-semibold text-[#F7F4EF] mb-2 text-base flex items-center gap-2">
               <Terminal className="w-4 h-4 text-[#A47550]" />
-              <span>{labels.install}</span>
+              <span>{t.modal.install}</span>
             </h3>
             <div className="space-y-2">
               {resource.installCommands.map((cmd, idx) => (
@@ -194,7 +144,7 @@ export function ResourceDetailModal({
                 >
                   <code className="text-[#D5A06B] mr-2">{cmd}</code>
                   {!cmd.startsWith("#") && (
-                    <CopyButton textToCopy={cmd} label="Copy" successLabel={labels.copied} />
+                    <CopyButton textToCopy={cmd} label="Copy" successLabel={t.modal.copied} />
                   )}
                 </div>
               ))}
@@ -210,7 +160,7 @@ export function ResourceDetailModal({
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded-lg bg-[#A47550] hover:bg-[#BD8A60] text-white transition-colors"
           >
-            <span>{labels.openGithub}</span>
+            <span>{t.modal.openGithub}</span>
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
           <button
@@ -218,7 +168,7 @@ export function ResourceDetailModal({
             onClick={onClose}
             className="px-4 py-2 text-xs font-semibold rounded-lg bg-[#14110E] hover:bg-[#261E17] text-[#B8ABA0] hover:text-[#F7F4EF] border border-[#302720] transition-colors"
           >
-            {labels.close}
+            {t.modal.close}
           </button>
         </div>
       </div>
